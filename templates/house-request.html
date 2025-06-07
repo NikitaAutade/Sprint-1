@@ -1,0 +1,12 @@
+<h2>Unapproved House Requests</h2>
+{% for house in unapproved_houses %}
+    <div>
+        <p><strong>House No:</strong> {{ house.house_no }}</p>
+        <p><strong>City:</strong> {{ house.city }}</p>
+        <form method="post" action="{% url 'approve-house' house.id %}">
+            {% csrf_token %}
+            <button type="submit">Approve</button>
+        </form>
+    </div>
+    <hr>
+{% endfor %}
